@@ -1,20 +1,24 @@
 import React, {Component} from 'react';
-import {Container, Text} from 'native-base';
+import {Container} from 'native-base';
 import HomeBody from './HomeBody';
-import Myheader from '../Header/Myheader';
+import {StatusBar} from 'react-native';
+import {Dimensions} from 'react-native';
+import HomeHeader from './HomeHeader';
+import Colors from '../../Colors/Colors';
+const windowW = Dimensions.get('window').width;
+const windowH = Dimensions.get('window').height;
 
 class HomeScreen extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+  static navigationOptions = {
+    header: () => <HomeHeader title={'Ketabi'} />,
+  };
   componentDidMount() {
     console.log('yeah mounted');
   }
   render() {
     return (
       <Container>
-        <Myheader navigation={this.props.navigation} />
+        <StatusBar backgroundColor={Colors.tomato} />
         <HomeBody />
       </Container>
     );

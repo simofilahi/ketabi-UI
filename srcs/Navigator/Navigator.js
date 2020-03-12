@@ -8,24 +8,33 @@ import SettingScreen from '../Screens/Setting/SettingScreen';
 import LoginScreen from '../Screens/Login/LoginScreen';
 import RegisterScreen from '../Screens/Register/RegisterScreen';
 import ForgetPassword from '../Screens/ForgetPass/ForgetPassword';
-import Profile from '../Screens/Profile/Profile';
-import Conversation from '../Screens/Profile/Profile';
-import Notifications from '../Screens/Notifications/Notifications';
+import ProfileScreen from '../Screens/Profile/ProfileScreen';
+import ConversationScreen from '../Screens/Conversation/ConversationScreen';
+import NotificationsScreen from '../Screens/Notifications/NotificationsScreen';
+
+const HomeStack = createStackNavigator({
+  Home: HomeScreen,
+});
+
+const ConversationStack = createStackNavigator({
+  Conversation: ConversationScreen,
+});
+
+const ProfileStack = createStackNavigator({
+  Profile: ProfileScreen,
+  Settings: SettingScreen,
+});
+
+const NotificationsStack = createStackNavigator({
+  Notifications: NotificationsScreen,
+});
 
 const AppTabNavigator = createBottomTabNavigator(
   {
-    Home: {
-      screen: HomeScreen,
-    },
-    Conversation: {
-      screen: Conversation,
-    },
-    Notifications: {
-      screen: Notifications,
-    },
-    Profile: {
-      screen: Profile,
-    },
+    Home: HomeStack,
+    Conversation: ConversationStack,
+    Notifications: NotificationsStack,
+    Profile: ProfileStack,
   },
   {
     initialRouteName: 'Home',
@@ -70,6 +79,10 @@ const AppTabNavigator = createBottomTabNavigator(
     },
   },
 );
+
+const SettingStack = createStackNavigator({
+  Setting: SettingScreen,
+});
 
 const AuthStack = createStackNavigator(
   {
