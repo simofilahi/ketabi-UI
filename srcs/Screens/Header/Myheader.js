@@ -21,62 +21,21 @@ class Myheader extends Component {
     };
   }
   render() {
-    const {searchBar} = this.state;
-    if (searchBar === false) {
-      return (
-        <Header transparent>
-          <StatusBar backgroundColor="#E9EBEE" />
-          <Left>
-            <Button
-              transparent
-              onPress={() => {
-                this.props.navigation.openDrawer();
-                console.log('props', this.props.navigation);
-              }}>
-              <Icon name="menu" />
-            </Button>
-          </Left>
-          <Body>
-            <Title>Wow</Title>
-          </Body>
-          <Right>
-            <Button
-              transparent
-              onPress={() => {
-                this.setState({
-                  searchBar: true,
-                });
-              }}>
-              <Icon name="search" />
-            </Button>
-            <Button transparent>
-              <Icon name="more" />
-            </Button>
-          </Right>
-        </Header>
-      );
-    } else if (searchBar === true) {
-      return (
-        <Header searchBar rounded transparent>
-          <StatusBar backgroundColor="#E9EBEE" />
-          <Item>
-            <Button
-              transparent
-              onPress={() => {
-                this.setState({
-                  searchBar: false,
-                });
-              }}>
-              <Icon name="arrow-back" />
-            </Button>
-            <Input placeholder="Search" />
-          </Item>
-          <Button transparent>
-            <Text>Search</Text>
-          </Button>
-        </Header>
-      );
-    } else return null;
+    return (
+      <Header
+        searchBar
+        rounded
+        androidStatusBarColor="tomato"
+        style={{backgroundColor: 'tomato'}}>
+        <Item>
+          <Icon name="ios-search" />
+          <Input placeholder="Search" />
+        </Item>
+        <Button transparent>
+          <Text>Search</Text>
+        </Button>
+      </Header>
+    );
   }
 }
 

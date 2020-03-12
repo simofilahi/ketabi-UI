@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Container} from 'native-base';
+import {Container, Text} from 'native-base';
 import HomeBody from './HomeBody';
 import Myheader from '../Header/Myheader';
 
@@ -8,9 +8,12 @@ class HomeScreen extends Component {
     super(props);
     this.state = {};
   }
+  componentDidMount() {
+    console.log('yeah mounted');
+  }
   render() {
     return (
-      <Container style={{backgroundColor: '#E9EBEE'}}>
+      <Container>
         <Myheader navigation={this.props.navigation} />
         <HomeBody />
       </Container>

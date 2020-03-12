@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Dimensions, StatusBar } from 'react-native';
+import React, {Component} from 'react';
+import {Dimensions, StatusBar} from 'react-native';
 import {
   Container,
   Content,
@@ -10,7 +10,7 @@ import {
   Text,
   Icon,
 } from 'native-base';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import {
   FullnameOnChange,
   EmailOnChange,
@@ -18,9 +18,9 @@ import {
   ShowPass,
 } from '../../Redux/Actions/RegisterAction';
 import Colors from '../../Colors/Colors';
-import MethodAuth from '../Components/Auth/MethodAuth'
-const height = Dimensions.get('screen').height
-const width = Dimensions.get('screen').width
+import MethodAuth from '../Components/Auth/MethodAuth';
+const height = Dimensions.get('screen').height;
+const width = Dimensions.get('screen').width;
 
 class RegisterScreen extends Component {
   constructor(props) {
@@ -34,7 +34,7 @@ class RegisterScreen extends Component {
         style={{
           flexDirection: 'row',
           justifyContent: 'center',
-          alignItems: 'center'
+          alignItems: 'center',
         }}>
         {/* <StatusBar hidden /> */}
         <Content>
@@ -43,42 +43,40 @@ class RegisterScreen extends Component {
               alignSelf: 'center',
               color: Colors.gray,
               fontSize: 60,
-              marginBottom: 40
+              marginBottom: 40,
             }}
             active
             type="FontAwesome5"
-            name='book-reader'
+            name="book-reader"
           />
           <Text
             style={{
               fontSize: 32,
               fontStyle: 'normal',
               alignSelf: 'center',
-            }}
-          >
+            }}>
             Create your account
-        </Text>
+          </Text>
           <Form
             style={{
               marginTop: 15,
               marginLeft: 10,
               marginRight: 10,
-              marginBottom: 30
+              marginBottom: 30,
             }}>
             <Item
               rounded
               last
               style={{
-                marginBottom: 10
-              }}
-            >
+                marginBottom: 10,
+              }}>
               <Icon
                 style={{
-                  color: Colors.gray
+                  color: Colors.gray,
                 }}
                 active
                 type="FontAwesome"
-                name='user'
+                name="user"
               />
               <Input
                 placeholder="Username"
@@ -95,16 +93,15 @@ class RegisterScreen extends Component {
               rounded
               last
               style={{
-                marginBottom: 10
-              }}
-            >
+                marginBottom: 10,
+              }}>
               <Icon
                 style={{
-                  color: Colors.gray
+                  color: Colors.gray,
                 }}
                 active
                 type="FontAwesome"
-                name='envelope-square'
+                name="envelope-square"
               />
               <Input
                 placeholder="Email"
@@ -120,11 +117,11 @@ class RegisterScreen extends Component {
             <Item rounded last>
               <Icon
                 style={{
-                  color: Colors.gray
+                  color: Colors.gray,
                 }}
                 active
                 type="FontAwesome"
-                name='key'
+                name="key"
               />
               <Input
                 secureTextEntry={this.props.Register.showpass ? false : true}
@@ -140,12 +137,12 @@ class RegisterScreen extends Component {
               <Icon
                 onPress={() => {
                   this.props.dispatch({
-                    type: ShowPass
+                    type: ShowPass,
                   });
                 }}
                 style={{
                   marginRight: 10,
-                  color: Colors.gray
+                  color: Colors.gray,
                 }}
                 active
                 type="FontAwesome"
@@ -161,40 +158,36 @@ class RegisterScreen extends Component {
               alignSelf: 'center',
               justifyContent: 'center',
               width: '60%',
-              color: Colors.brandPrimary
-            }}
-          >
-            <Text style={{ alignSelf: 'center' }}>Register</Text>
+              backgroundColor: Colors.tomato,
+            }}>
+            <Text style={{alignSelf: 'center'}}>Register</Text>
           </Button>
           <Text
             style={{
               alignSelf: 'center',
               color: Colors.gray,
-            }}
-          >
-            Alerday have an account,
-          {" "}
+            }}>
+            Alerday have an account,{' '}
             <Text
               onPress={() => {
-                this.props.navigation.navigate("Login")
+                this.props.navigation.navigate('Login');
               }}
               style={{
                 color: Colors.brandPrimary,
-              }}
-            >
+              }}>
               Sign in
-          </Text>
+            </Text>
           </Text>
           <MethodAuth />
         </Content>
-      </Container >
+      </Container>
     );
   }
 }
 
 const mapStateToProps = state => {
-  const { Register } = state;
-  return { Register };
+  const {Register} = state;
+  return {Register};
 };
 
 export default connect(mapStateToProps)(RegisterScreen);

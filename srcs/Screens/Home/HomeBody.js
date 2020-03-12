@@ -13,6 +13,7 @@ import {
 } from 'native-base';
 import {Image} from 'react-native';
 import axios from 'axios';
+import Colors from '../../Colors/Colors';
 import {rooturl, key} from '../../../config';
 
 class HomeBody extends Component {
@@ -43,7 +44,7 @@ class HomeBody extends Component {
   render() {
     const {photos} = this.state;
     return (
-      <Content>
+      <Content style={{backgroundColor: Colors.gray}}>
         {photos !== null &&
           photos.map((elem, index) => {
             return (
