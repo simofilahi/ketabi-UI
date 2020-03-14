@@ -15,6 +15,7 @@ import axios from 'axios';
 import Colors from '../../Colors/Colors';
 import Post from './Post';
 import {rooturl, key} from '../../../config';
+import Ripple from 'react-native-material-ripple';
 
 class HomeBody extends Component {
   constructor(props) {
@@ -51,37 +52,39 @@ class HomeBody extends Component {
             photos.map((elem, index) => {
               return (
                 <Card>
-                  <CardItem>
-                    <Left>
+                  <Ripple>
+                    <CardItem>
+                      <Left>
+                        <Body>
+                          <Text></Text>
+                          {/* <Text note>GeekyAnts</Text> */}
+                        </Body>
+                      </Left>
+                    </CardItem>
+                    <CardItem cardBody>
+                      <Image
+                        source={{uri: elem.urls.small}}
+                        style={{height: 200, width: null, flex: 1}}
+                      />
+                    </CardItem>
+                    <CardItem>
+                      <Left>
+                        <Button transparent>
+                          <Icon active name="thumbs-up" />
+                          <Text>{elem.likes}</Text>
+                        </Button>
+                      </Left>
                       <Body>
-                        <Text></Text>
-                        {/* <Text note>GeekyAnts</Text> */}
+                        <Button transparent>
+                          <Icon active name="chatbubbles" />
+                          <Text>4 Comments</Text>
+                        </Button>
                       </Body>
-                    </Left>
-                  </CardItem>
-                  <CardItem cardBody>
-                    <Image
-                      source={{uri: elem.urls.small}}
-                      style={{height: 200, width: null, flex: 1}}
-                    />
-                  </CardItem>
-                  <CardItem>
-                    <Left>
-                      <Button transparent>
-                        <Icon active name="thumbs-up" />
-                        <Text>{elem.likes}</Text>
-                      </Button>
-                    </Left>
-                    <Body>
-                      <Button transparent>
-                        <Icon active name="chatbubbles" />
-                        <Text>4 Comments</Text>
-                      </Button>
-                    </Body>
-                    <Right>
-                      <Text>11h ago</Text>
-                    </Right>
-                  </CardItem>
+                      <Right>
+                        <Text>11h ago</Text>
+                      </Right>
+                    </CardItem>
+                  </Ripple>
                 </Card>
               );
             })}

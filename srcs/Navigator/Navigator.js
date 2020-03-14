@@ -1,6 +1,5 @@
 import React from 'react';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
-import {Icon} from 'native-base';
 import {createStackNavigator} from 'react-navigation-stack';
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import HomeScreen from '../Screens/Home/HomeScreen';
@@ -11,6 +10,10 @@ import ForgetPassword from '../Screens/ForgetPass/ForgetPassword';
 import ProfileScreen from '../Screens/Profile/ProfileScreen';
 import ConversationScreen from '../Screens/Conversation/ConversationScreen';
 import NotificationsScreen from '../Screens/Notifications/NotificationsScreen';
+import AboutScreen from '../Screens/About/AboutScreen';
+import HelpScreen from '../Screens/Help/HelpScreen';
+import AcountScreen from '../Screens/Account/AccountScreen';
+import {Icon} from 'native-base';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -23,6 +26,9 @@ const ConversationStack = createStackNavigator({
 const ProfileStack = createStackNavigator({
   Profile: ProfileScreen,
   Settings: SettingScreen,
+  About: AboutScreen,
+  Help: HelpScreen,
+  Account: AcountScreen,
 });
 
 const NotificationsStack = createStackNavigator({

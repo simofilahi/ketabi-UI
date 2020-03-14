@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text, Button, Icon} from 'native-base';
+import Ripple from 'react-native-material-ripple';
 
 class ProfileHeader extends Component {
   render() {
@@ -34,21 +35,36 @@ class ProfileHeader extends Component {
             alignItems: 'center',
             flexDirection: 'row',
           }}>
-          <Button
-            transparent
+          <Ripple
+            rippleContainerBorderRadius={200}
+            rippleCentered={true}
+            rippleFades={false}
             onPress={() => {
-              console.log(this.props);
-              this.props.navigation.navigate('Settings');
+              setTimeout(() => {
+                this.props.navigation.navigate('Settings');
+              }, 300);
             }}>
-            <Icon
-              name="sliders-h"
-              type="FontAwesome5"
-              style={{color: Colors.white}}
-            />
-          </Button>
-          <Button transparent>
-            <Icon name="more" style={{color: Colors.white}} />
-          </Button>
+            <Button
+              transparent
+              onPress={() => {
+                console.log(this.props);
+                this.props.navigation.navigate('Settings');
+              }}>
+              <Icon
+                name="sliders-h"
+                type="FontAwesome5"
+                style={{color: Colors.white}}
+              />
+            </Button>
+          </Ripple>
+          <Ripple
+            rippleContainerBorderRadius={100}
+            rippleCentered={true}
+            rippleFades={false}>
+            <Button transparent>
+              <Icon name="more" style={{color: Colors.white}} />
+            </Button>
+          </Ripple>
         </View>
       </View>
     );

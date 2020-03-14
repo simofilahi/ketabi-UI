@@ -3,6 +3,7 @@ import {View, Text, Button, Icon} from 'native-base';
 import {SearchBar} from 'react-native-elements';
 import {SearchBoolean} from '../../Redux/Actions/HomeAction';
 import {connect} from 'react-redux';
+import Ripple from 'react-native-material-ripple';
 
 class HomeHeader extends Component {
   render() {
@@ -33,8 +34,9 @@ class HomeHeader extends Component {
               onChangeText={() => console.log('yes')}
               platform={'android'}
               placeholder="Search"
+              clearIcon={false}
               containerStyle={{
-                width: '85%',
+                width: '95%',
                 marginTop: 15,
                 marginBottom: 15,
                 justifyContent: 'center',
@@ -86,19 +88,30 @@ class HomeHeader extends Component {
                 alignItems: 'center',
                 flexDirection: 'row',
               }}>
-              <Button
-                transparent
+              <Ripple
+                rippleContainerBorderRadius={100}
+                rippleCentered={true}
+                rippleFades={false}
                 onPress={() => {
-                  this.props.dispatch({
-                    type: SearchBoolean,
-                    boolean: true,
-                  });
+                  setTimeout(() => {
+                    this.props.dispatch({
+                      type: SearchBoolean,
+                      boolean: true,
+                    });
+                  }, 300);
                 }}>
-                <Icon name="search" style={{color: Colors.white}} />
-              </Button>
-              <Button transparent>
-                <Icon name="more" style={{color: Colors.white}} />
-              </Button>
+                <Button transparent>
+                  <Icon name="search" style={{color: Colors.white}} />
+                </Button>
+              </Ripple>
+              <Ripple
+                rippleContainerBorderRadius={100}
+                rippleCentered={true}
+                rippleFades={false}>
+                <Button transparent>
+                  <Icon name="more" style={{color: Colors.white}} />
+                </Button>
+              </Ripple>
             </View>
           </>
         )}
