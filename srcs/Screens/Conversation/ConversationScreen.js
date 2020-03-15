@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {ListItem} from 'react-native-elements';
 import {Content, Container} from 'native-base';
 import Colors from '../../Colors/Colors';
-import HomeHeader from '../Home/HomeHeader';
+import ConversationHeader from './ConversationHeader';
 
 const list = [
   {
@@ -105,7 +105,7 @@ const list = [
 export class ConversationScreen extends Component {
   static navigationOptions = ({navigation}) => {
     return {
-      header: () => <HomeHeader title={'Conversation'} />,
+      header: () => <ConversationHeader />,
     };
   };
   render() {

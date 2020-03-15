@@ -46,8 +46,13 @@ class HomeBody extends Component {
     const {photos} = this.state;
     return (
       <>
-        <Post />
-        <Content style={{backgroundColor: Colors.white}}>
+        <Post navigation={this.props.navigation} />
+        <Content
+          style={{backgroundColor: Colors.white}}
+          disableKBDismissScroll={true}
+          refreshing={true}
+          enableResetScrollToCoords={true}
+          scrollEnabled={true}>
           {photos !== null &&
             photos.map((elem, index) => {
               return (

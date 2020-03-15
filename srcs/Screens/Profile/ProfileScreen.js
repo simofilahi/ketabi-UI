@@ -11,10 +11,114 @@ import {
   ScrollableTab,
   TabHeading,
   Icon,
+  Fab,
+  Button,
+  ListItem,
 } from 'native-base';
+import {connect} from 'react-redux';
+import {FabOnchange} from '../../Redux/Actions/ProfileActions';
 import {Avatar} from 'react-native-elements';
 import ProfileHeader from './ProfileHeader';
 import Colors from '../../Colors/Colors';
+
+const list2 = [
+  {
+    name: 'Amy Farha',
+    avatar_url:
+      'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+    subtitle: 'Vice President',
+  },
+  {
+    name: 'Chris Jackson',
+    avatar_url:
+      'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+    subtitle: 'Vice Chairman',
+  },
+  {
+    name: 'Amy Farha',
+    avatar_url:
+      'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+    subtitle: 'Vice President',
+  },
+  {
+    name: 'Chris Jackson',
+    avatar_url:
+      'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+    subtitle: 'Vice Chairman',
+  },
+  {
+    name: 'Amy Farha',
+    avatar_url:
+      'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+    subtitle: 'Vice President',
+  },
+  {
+    name: 'Chris Jackson',
+    avatar_url:
+      'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+    subtitle: 'Vice Chairman',
+  },
+  {
+    name: 'Amy Farha',
+    avatar_url:
+      'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+    subtitle: 'Vice President',
+  },
+  {
+    name: 'Chris Jackson',
+    avatar_url:
+      'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+    subtitle: 'Vice Chairman',
+  },
+  {
+    name: 'Amy Farha',
+    avatar_url:
+      'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+    subtitle: 'Vice President',
+  },
+  {
+    name: 'Chris Jackson',
+    avatar_url:
+      'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+    subtitle: 'Vice Chairman',
+  },
+  {
+    name: 'Amy Farha',
+    avatar_url:
+      'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+    subtitle: 'Vice President',
+  },
+  {
+    name: 'Chris Jackson',
+    avatar_url:
+      'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+    subtitle: 'Vice Chairman',
+  },
+  {
+    name: 'Amy Farha',
+    avatar_url:
+      'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+    subtitle: 'Vice President',
+  },
+  {
+    name: 'Chris Jackson',
+    avatar_url:
+      'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+    subtitle: 'Vice Chairman',
+  },
+  {
+    name: 'Amy Farha',
+    avatar_url:
+      'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+    subtitle: 'Vice President',
+  },
+  {
+    name: 'Chris Jackson',
+    avatar_url:
+      'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+    subtitle: 'Vice Chairman',
+  },
+];
 
 const list = [
   {
@@ -45,7 +149,7 @@ export class ProfileScreen extends Component {
     return (
       <Container>
         <Content>
-          <Grid style={{height: 250}}>
+          <Grid style={{height: 180}}>
             <Row
               style={{
                 height: '80%',
@@ -54,12 +158,12 @@ export class ProfileScreen extends Component {
               <Col
                 style={{
                   height: '80%',
-                  width: '50%',
+                  width: '40%',
                   justifyContent: 'flex-start',
                   alignItems: 'center',
                 }}>
                 <Avatar
-                  size="xlarge"
+                  size="large"
                   rounded
                   icon={{name: 'user', color: 'tomato', type: 'font-awesome'}}
                   overlayContainerStyle={{backgroundColor: Colors.white}}
@@ -131,42 +235,45 @@ export class ProfileScreen extends Component {
                 </Row>
               </Col>
             </Row>
-            <Row
-              style={{
-                height: '20%',
-                width: '100%',
-              }}>
-              <Tabs
-                renderTabBar={() => (
-                  <ScrollableTab
-                    style={{
-                      backgroundColor: Colors.tomato,
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                    }}
-                  />
-                )}>
-                <Tab
-                  heading={
-                    <TabHeading style={{backgroundColor: Colors.tomato}}>
-                      <Icon name="journal" style={{color: Colors.white}} />
-                      <Text style={{color: Colors.white}}>journal</Text>
-                    </TabHeading>
-                  }></Tab>
-                <Tab
-                  heading={
-                    <TabHeading style={{backgroundColor: Colors.tomato}}>
-                      <Icon name="add" style={{color: Colors.white}} />
-                      <Text style={{color: Colors.white}}>add</Text>
-                    </TabHeading>
-                  }></Tab>
-              </Tabs>
-            </Row>
           </Grid>
+          {list2.map((l, i) => (
+            <ListItem
+              key={i}
+              leftAvatar={{source: {uri: l.avatar_url}}}
+              title={l.name}
+              subtitle={l.subtitle}
+              bottomDivider
+              badge={{
+                color: Colors.tomato,
+                value: 3,
+                textStyle: {color: Colors.gray},
+                // containerStyle: {},
+              }}
+            />
+          ))}
         </Content>
+        <Fab
+          active={this.props.Profile.active}
+          direction="up"
+          containerStyle={{}}
+          style={{backgroundColor: Colors.tomato}}
+          position="bottomRight"
+          onPress={() => {
+            this.props.navigation.navigate('MyModal');
+            this.props.dispatch({
+              type: FabOnchange,
+            });
+          }}>
+          <Icon name="md-add" type="Ionicons" />
+        </Fab>
       </Container>
     );
   }
 }
 
-export default ProfileScreen;
+const mapStateToProps = state => {
+  const {Profile} = state;
+  return {Profile};
+};
+
+export default connect(mapStateToProps)(ProfileScreen);

@@ -19,7 +19,7 @@ class HomeScreen extends Component {
     return (
       <Container>
         <StatusBar backgroundColor={Colors.tomato} />
-        <HomeBody />
+        <HomeBody navigation={this.props.navigation} />
       </Container>
     );
   }

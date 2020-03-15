@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import {Row, Col, Text, Input} from 'native-base';
 import {Avatar} from 'react-native-elements';
+import {Keyboard} from 'react-native';
 import Colors from '../../Colors/Colors';
 
 export class Post extends Component {
   render() {
+    console.log(this.props.navigation);
     return (
       <>
         <Row
@@ -49,6 +51,9 @@ export class Post extends Component {
                 width: '95%',
               }}
               placeholder="   Typing"
+              onFocus={() => {
+                this.props.navigation.navigate('MyModal');
+              }}
             />
           </Col>
         </Row>

@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {ListItem} from 'react-native-elements';
 import {Content, Container} from 'native-base';
-import HomeHeader from '../Home/HomeHeader';
 import Colors from '../../Colors/Colors';
+import NotificationsHeader from './NotificationsHeader';
 
 const list = [
   {
@@ -106,7 +106,7 @@ const list = [
 export class NotificationsScreen extends Component {
   static navigationOptions = ({navigation}) => {
     return {
-      header: () => <HomeHeader title={'Notifications'} />,
+      header: () => <NotificationsHeader title={'Notifications'} />,
     };
   };
   render() {

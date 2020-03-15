@@ -13,6 +13,7 @@ import NotificationsScreen from '../Screens/Notifications/NotificationsScreen';
 import AboutScreen from '../Screens/About/AboutScreen';
 import HelpScreen from '../Screens/Help/HelpScreen';
 import AcountScreen from '../Screens/Account/AccountScreen';
+import ModalScreen from '../Screens/Posts/ModalScreen';
 import {Icon} from 'native-base';
 
 const HomeStack = createStackNavigator({
@@ -23,13 +24,19 @@ const ConversationStack = createStackNavigator({
   Conversation: ConversationScreen,
 });
 
-const ProfileStack = createStackNavigator({
-  Profile: ProfileScreen,
-  Settings: SettingScreen,
-  About: AboutScreen,
-  Help: HelpScreen,
-  Account: AcountScreen,
-});
+const ProfileStack = createStackNavigator(
+  {
+    Profile: ProfileScreen,
+    Settings: SettingScreen,
+    About: AboutScreen,
+    Help: HelpScreen,
+    Account: AcountScreen,
+    MyModal: ModalScreen,
+  },
+  {
+    mode: 'modal',
+  },
+);
 
 const NotificationsStack = createStackNavigator({
   Notifications: NotificationsScreen,

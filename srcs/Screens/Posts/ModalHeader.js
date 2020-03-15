@@ -4,7 +4,7 @@ import Colors from '../../Colors/Colors';
 import Ripple from 'react-native-material-ripple';
 import {connect} from 'react-redux';
 
-export class AccountHeader extends Component {
+export class ModalHeader extends Component {
   render() {
     return (
       <View
@@ -59,7 +59,7 @@ export class AccountHeader extends Component {
                 fontWeight: 'bold',
                 color: Colors.white,
               }}>
-              Edit profile
+              Create Post
             </Text>
           </View>
           <View
@@ -75,7 +75,7 @@ export class AccountHeader extends Component {
                 this.props.navigation.goBack();
               }}>
               <Button transparent>
-                <Text style={{color: Colors.white}}>Save</Text>
+                <Text style={{color: Colors.white}}>Post</Text>
               </Button>
             </Ripple>
           </View>
@@ -85,9 +85,4 @@ export class AccountHeader extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  const {Account} = state;
-  return {Account};
-};
-
-export default connect(mapStateToProps)(AccountHeader);
+export default ModalHeader;
