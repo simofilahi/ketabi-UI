@@ -7,7 +7,7 @@ import Ripple from 'react-native-material-ripple';
 
 class NotificationsHeader extends Component {
   render() {
-    console.log('HOME ==> ', this.props.Home);
+    // console.log('HOME ==> ', this.props.Home);
     const {search} = this.props.Home;
     return (
       <View

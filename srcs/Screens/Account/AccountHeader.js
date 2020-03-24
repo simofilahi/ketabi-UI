@@ -26,7 +26,7 @@ export class AccountHeader extends Component {
             rippleCentered={true}
             rippleFades={false}
             onPress={() => {
-              console.log(this.props.navigation);
+              // console.log(this.props.navigation);
               this.props.navigation.goBack();
             }}>
             <Button transparent>

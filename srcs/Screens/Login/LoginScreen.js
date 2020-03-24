@@ -16,16 +16,38 @@ import {
   PasswordOnChange,
   ShowPass,
 } from '../../Redux/Actions/LoginAction';
+import {StoreUuid} from '../../Redux/Actions/ProfileActions';
 import Colors from '../../Colors/Colors';
 import MethodAuth from '../Components/Auth/MethodAuth';
-const height = Dimensions.get('screen').height;
-const width = Dimensions.get('screen').width;
+import {AsyncStorage} from 'react-native';
+import {apiurl} from '../../../config';
+import axios from 'axios';
 
 class LoginScreen extends Component {
   constructor(props) {
     super(props);
   }
-
+  login = () => {
+    const {email, password} = this.props.Login;
+    const url = `${apiurl}auth/login`;
+    axios
+      .post(url, {
+        email,
+        password,
+      })
+      .then(async res => {
+        console.log({res: res.data});
+        this.props.dispatch({
+          type: StoreUuid,
+          uuid: res.data.uuid,
+        });
+        await AsyncStorage.setItem('token', res.data.token);
+        this.props.navigation.navigate('Home');
+      })
+      .catch(err => {
+        console.log({err: err});
+      });
+  };
   render() {
     return (
       <Container
@@ -77,10 +99,9 @@ class LoginScreen extends Component {
               <Input
                 placeholder="Username"
                 onChangeText={text => {
-                  const password = text;
                   this.props.dispatch({
                     type: EmailOnChange,
-                    password: password,
+                    email: text,
                   });
                 }}
               />
@@ -141,6 +162,9 @@ class LoginScreen extends Component {
               justifyContent: 'center',
               width: '60%',
               backgroundColor: Colors.tomato,
+            }}
+            onPress={() => {
+              this.login();
             }}>
             <Text style={{alignSelf: 'center'}}>Login</Text>
           </Button>

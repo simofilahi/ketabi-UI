@@ -7,7 +7,7 @@ import Ripple from 'react-native-material-ripple';
 
 class ConversationHeader extends Component {
   render() {
-    console.log('HOME ==> ', this.props.Home);
+    // console.log('HOME ==> ', this.props.Home);
     const {search} = this.props.Home;
     return (
       <View
@@ -59,7 +59,7 @@ class ConversationHeader extends Component {
                   color: Colors.white,
                   marginLeft: 20,
                 }}>
-                {this.props.title}
+                {'Conversation'}
               </Text>
             </View>
             <View

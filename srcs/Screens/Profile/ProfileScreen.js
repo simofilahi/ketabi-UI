@@ -16,10 +16,12 @@ import {
   ListItem,
 } from 'native-base';
 import {connect} from 'react-redux';
-import {FabOnchange} from '../../Redux/Actions/ProfileActions';
+import {FabOnchange, ProfileInfo} from '../../Redux/Actions/ProfileActions';
 import {Avatar} from 'react-native-elements';
 import ProfileHeader from './ProfileHeader';
 import Colors from '../../Colors/Colors';
+import {apiurl} from '../../../config';
+import axios from 'axios';
 
 const list2 = [
   {
@@ -145,7 +147,27 @@ export class ProfileScreen extends Component {
       header: () => <ProfileHeader navigation={navigation} />,
     };
   };
+  componentDidMount() {
+    console.log(this.props.navigation);
+    const {uuid} = this.props.Profile;
+
+    const url = apiurl + `/profile/${uuid}`;
+    console.log({url: url});
+    axios
+      .get(url)
+      .then(res => {
+        console.log('res ==> ', res.data);
+        this.props.dispatch({
+          type: ProfileInfo,
+          fullname: res.data.data.username,
+        });
+      })
+      .catch(err => {
+        console.log({err: err});
+      });
+  }
   render() {
+    console.log({props: this.props.Profile});
     return (
       <Container>
         <Content>
@@ -179,7 +201,7 @@ export class ProfileScreen extends Component {
                     marginTop: 8,
                     color: Colors.white,
                   }}>
-                  Mohamed filahi
+                  {this.props.Profile.fullname}
                 </Text>
               </Col>
               <Col

@@ -6,7 +6,7 @@ import Colors from '../../Colors/Colors';
 
 export class Post extends Component {
   render() {
-    console.log(this.props.navigation);
+    // console.log(this.props.navigation);
     return (
       <>
         <Row

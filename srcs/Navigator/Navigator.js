@@ -14,29 +14,32 @@ import AboutScreen from '../Screens/About/AboutScreen';
 import HelpScreen from '../Screens/Help/HelpScreen';
 import AcountScreen from '../Screens/Account/AccountScreen';
 import ModalScreen from '../Screens/Posts/ModalScreen';
+import ChatScreen from '../Screens/Chat/ChatScreen';
+import {SplashScreen} from '../Screens/Splash/SplashScreen';
 import {Icon} from 'native-base';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
 });
 
-const ConversationStack = createStackNavigator({
-  Conversation: ConversationScreen,
-});
-
-const ProfileStack = createStackNavigator(
+const ConversationStack = createStackNavigator(
   {
-    Profile: ProfileScreen,
-    Settings: SettingScreen,
-    About: AboutScreen,
-    Help: HelpScreen,
-    Account: AcountScreen,
-    MyModal: ModalScreen,
+    Conversation: ConversationScreen,
+    Chat: ChatScreen,
   },
-  {
-    mode: 'modal',
-  },
+  // {
+  //   initialRouteName: 'Chat',
+  // },
 );
+
+const ProfileStack = createStackNavigator({
+  Profile: ProfileScreen,
+  Settings: SettingScreen,
+  About: AboutScreen,
+  Help: HelpScreen,
+  Account: AcountScreen,
+  MyModal: ModalScreen,
+});
 
 const NotificationsStack = createStackNavigator({
   Notifications: NotificationsScreen,
@@ -102,19 +105,19 @@ const AuthStack = createStackNavigator(
     Login: {
       screen: LoginScreen,
       navigationOptions: {
-        header: null,
+        headerShown: false,
       },
     },
     Register: {
       screen: RegisterScreen,
       navigationOptions: {
-        header: null,
+        headerShown: false,
       },
     },
     Forget: {
       screen: ForgetPassword,
       navigationOptions: {
-        header: null,
+        headerShown: false,
       },
     },
   },
@@ -125,8 +128,11 @@ const AuthStack = createStackNavigator(
 
 const AppMain = createSwitchNavigator(
   {
+    splach: SplashScreen,
     auth: AuthStack,
     app: AppTabNavigator,
+    //
+    // Chat: ConversationStack,
   },
   {
     initialRouteName: 'app',

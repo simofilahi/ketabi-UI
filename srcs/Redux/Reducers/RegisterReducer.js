@@ -7,28 +7,29 @@ import {
 } from '../Actions/RegisterAction';
 
 const INITIAL_STATE = {
-  fullname: '',
+  username: '',
   email: '',
   password: '',
   showpass: false,
 };
 
 const RegisterReducer = (state = INITIAL_STATE, action) => {
+  // console.log('here state ==> ', state);
   switch (action.type) {
     case FullnameOnChange:
       return {
         ...state,
-        fullname: action.text,
+        username: action.username,
       };
     case EmailOnChange:
       return {
         ...state,
-        email: action.text,
+        email: action.email,
       };
     case PasswordOnChange:
       return {
         ...state,
-        password: action.text,
+        password: action.password,
       };
     case CreateAccount:
       return {
@@ -37,8 +38,8 @@ const RegisterReducer = (state = INITIAL_STATE, action) => {
     case ShowPass:
       return {
         ...state,
-        showpass: !state.showpass
-      }
+        showpass: !state.showpass,
+      };
     default:
       return state;
   }

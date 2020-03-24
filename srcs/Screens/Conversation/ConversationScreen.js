@@ -125,6 +125,11 @@ export class ConversationScreen extends Component {
                 textStyle: {color: Colors.gray},
                 // containerStyle: {},
               }}
+              onPress={() => {
+                setTimeout(() => {
+                  this.props.navigation.navigate('Chat');
+                }, 50);
+              }}
             />
           ))}
         </Content>

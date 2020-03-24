@@ -7,8 +7,13 @@ class ModalScreen extends Component {
   static navigationOptions = ({navigation}) => {
     return {
       header: () => <ModalHeader navigation={navigation} />,
+      tabBarVisible: false,
     };
   };
+  componentWillMount() {
+    console.log(this.props.navigation);
+    this.props.navigation.setParams({showTabBar: false});
+  }
   render() {
     return (
       <View style={styles.container}>

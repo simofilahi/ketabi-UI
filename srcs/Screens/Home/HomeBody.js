@@ -30,9 +30,9 @@ class HomeBody extends Component {
       .get(url)
       .then(res => {
         res.data.map(elem => {
-          console.log('\n');
-          console.log('elem => ', elem);
-          console.log('\n');
+          // console.log('\n');
+          // console.log('elem => ', elem);
+          // console.log('\n');
         });
         this.setState({
           photos: res.data,

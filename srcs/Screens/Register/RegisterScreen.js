@@ -12,6 +12,7 @@ import {
 } from 'native-base';
 import {connect} from 'react-redux';
 import {
+  CreateAccount,
   FullnameOnChange,
   EmailOnChange,
   PasswordOnChange,
@@ -19,15 +20,39 @@ import {
 } from '../../Redux/Actions/RegisterAction';
 import Colors from '../../Colors/Colors';
 import MethodAuth from '../Components/Auth/MethodAuth';
+import axios from 'axios';
+import {apiurl} from '../../../config';
 const height = Dimensions.get('screen').height;
 const width = Dimensions.get('screen').width;
 
 class RegisterScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
   }
 
+  registre = () => {
+    // console.log('props ==> ', this.props.Register);
+    const {email, password} = this.props.Register;
+    // console.log({email: email, password: password});
+    // if (email.lentgh > 0 && password.lentgh > 0) {
+    // console.log('inside condition', apiurl);
+    const url = `${apiurl}auth/signup`;
+    // console.log(url);
+    axios
+      .post(url, {
+        username: 'simo',
+        email: 'mohamed222222@gmail.com',
+        password: '1234',
+      })
+      .then(res => {
+        // console.log({res: res});
+      })
+      .catch(err => {
+        // console.log({err: err});
+      });
+    // } else {
+    // }
+  };
   render() {
     return (
       <Container
@@ -36,7 +61,7 @@ class RegisterScreen extends Component {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        {/* <StatusBar hidden /> */}
+        <StatusBar backgroundColor={Colors.tomato} />
         <Content>
           <Icon
             style={{
@@ -81,10 +106,9 @@ class RegisterScreen extends Component {
               <Input
                 placeholder="Username"
                 onChangeText={text => {
-                  const password = text;
                   this.props.dispatch({
                     type: FullnameOnChange,
-                    password: password,
+                    username: text,
                   });
                 }}
               />
@@ -106,10 +130,9 @@ class RegisterScreen extends Component {
               <Input
                 placeholder="Email"
                 onChangeText={text => {
-                  const password = text;
                   this.props.dispatch({
                     type: EmailOnChange,
-                    password: password,
+                    email: text,
                   });
                 }}
               />
@@ -127,10 +150,9 @@ class RegisterScreen extends Component {
                 secureTextEntry={this.props.Register.showpass ? false : true}
                 placeholder="Password"
                 onChangeText={text => {
-                  const password = text;
                   this.props.dispatch({
                     type: PasswordOnChange,
-                    password: password,
+                    password: text,
                   });
                 }}
               />
@@ -159,6 +181,10 @@ class RegisterScreen extends Component {
               justifyContent: 'center',
               width: '60%',
               backgroundColor: Colors.tomato,
+            }}
+            onPress={() => {
+              this.props.navigation.navigate('Home');
+              // this.registre();
             }}>
             <Text style={{alignSelf: 'center'}}>Register</Text>
           </Button>

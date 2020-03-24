@@ -5,7 +5,6 @@ const INITIAL_STATE = {
 };
 
 const HomeReducer = (state = INITIAL_STATE, action) => {
-  console.log('inside reducer', action.type);
   switch (action.type) {
     case SearchBoolean:
       return {
